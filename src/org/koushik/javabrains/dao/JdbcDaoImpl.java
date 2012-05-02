@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.sql.DataSource;
 import org.koushik.javabrains.model.Circle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,6 +18,8 @@ public class JdbcDaoImpl {
 
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public Circle getCircle(int circleId) {
         Connection conn = null;
@@ -51,5 +54,17 @@ public class JdbcDaoImpl {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public int getCircleCount() {
+        String sql = "SELECT COUNT(*) FROM CIRCLE";0
+        return jdbcTemplate.queryForInt(sql);
+    }
 }

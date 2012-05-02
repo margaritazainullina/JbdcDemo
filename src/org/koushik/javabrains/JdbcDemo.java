@@ -12,5 +12,6 @@ public class JdbcDemo {
         JdbcDaoImpl dao = (JdbcDaoImpl) ctx.getBean("jdbcDaoImpl");
         Circle circle = dao.getCircle(1);
         System.out.println(circle.getName());
+        System.out.println(dao.getCircleCount());
     }
 }
