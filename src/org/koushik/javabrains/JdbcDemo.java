@@ -9,8 +9,8 @@ public class JdbcDemo {
 
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-        JdbcDaoImpl dao = (JdbcDaoImpl) ctx.getBean("jdbcDaoImpl", "JdbcDaoImpl.class");
-        Circle circle = new JdbcDaoImpl().getCircle(1);
+        JdbcDaoImpl dao = (JdbcDaoImpl) ctx.getBean("jdbcDaoImpl");
+        Circle circle = dao.getCircle(1);
         System.out.println(circle.getName());
     }
 }

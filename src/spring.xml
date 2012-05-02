@@ -12,7 +12,9 @@
       
     <context:annotation-config/> 
     <context:component-scan base-package="org.koushik.javabrains.dao"/>
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DataManagerDatasource">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="maxActive" value="5"/>
+        <property name="initialSize" value="2" />
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/db1"/>
         <property name="username" value="root"/>
